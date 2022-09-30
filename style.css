@@ -47,21 +47,20 @@ header > h1{
     font-size:0.90em;
 }
 .container{
-    display:none;
+  
 }
 .container > header > h1{
     font-size:1.30em;
 }
 
-.turn-display{
+.message-display{
     margin-top:10px;
     margin-bottom:20px;
     text-align: center;
     color:var(--main-color);
+    font-size:1.5em;
 }
-.turn-display > p{
-    font-size:1.25em;
-}
+
 .gameboard{
     display:grid;
     grid-template-columns: minmax(100px, 125px) minmax(100px, 125px) minmax(100px, 125px);
