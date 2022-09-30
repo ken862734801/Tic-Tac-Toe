@@ -103,8 +103,14 @@ const displayController = (() => {
     };
 
     const clearGameDisplay = () => {
+        for(i =0; i < squares.length; i++){
+            squares[i].textContent = "";
+            console.log("clear!")
+        }
+    };
+    resetBtn.addEventListener("click", clearGameDisplay);
 
-    }
+  return {clearGameDisplay}
 
   
 
