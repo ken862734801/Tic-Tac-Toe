@@ -13,6 +13,7 @@ const gameBoard = (() => {
 
     const clearBoard = () => {
         board = Array(9).fill("");
+        console.log(board);
     }
 
     const markBoard = (marker, index) => {
@@ -45,9 +46,9 @@ const gameBoard = (() => {
 
     const winConditionDiagonal = () => {
         if(board[0] == gameController.getCurrentPlayer().marker && board[0] == board[4] && board[0]== board[8]){
-            console.log("Player " + gameController.getCurrentPlayer().marker + "won!");
+            console.log("Player " + gameController.getCurrentPlayer().marker + " won!");
         }else if(board[2] == gameController.getCurrentPlayer().marker && board[2] == board[4] && board[2] == board[6]){
-            console.log("Player " + gameController.getCurrentPlayer().marker + "won!");
+            console.log("Player " + gameController.getCurrentPlayer().marker + " won!");
         }
     }
 
@@ -76,7 +77,12 @@ const gameController = (() => {
         }
     };
 
-    return {getCurrentPlayer, playerTurn}
+    const resetGame = () => {
+        gameBoard.clearBoard();
+        currentPlayer = playerOne;
+    }
+
+    return {getCurrentPlayer, playerTurn, resetGame}
 })();
 
 const displayController = (() => {
@@ -105,7 +111,8 @@ const displayController = (() => {
     const clearGameDisplay = () => {
         for(i =0; i < squares.length; i++){
             squares[i].textContent = "";
-            console.log("clear!")
+            console.log("clear!");
+            gameController.resetGame();
         }
     };
     resetBtn.addEventListener("click", clearGameDisplay);
