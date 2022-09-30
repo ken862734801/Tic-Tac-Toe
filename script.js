@@ -19,29 +19,40 @@ const gameBoard = (() => {
         board[index] = marker;
         winConditionVertical();
         winConditionDiagonal();
+        winConditionHorizontal();
         console.log(board);
     }
 
     const winConditionVertical = () => {
         if(board[0] == gameController.getCurrentPlayer().marker && board[0] == board[3] && board[0]== board[6]){
-            console.log("Winner!")
+            console.log("Player " + gameController.getCurrentPlayer().marker + " won!");
         }else if(board[1] == gameController.getCurrentPlayer().marker && board[1] == board[4] && board[1] == board[7]){
-            console.log("Winner");
+            console.log("Player " + gameController.getCurrentPlayer().marker + " won!");
         }else if(board[2] == gameController.getCurrentPlayer().marker && board[2] == board[5] && board[2] == board[6]){
-            console.log("Winner!")
+            console.log("Player " + gameController.getCurrentPlayer().marker + " won!");
+        }
+    }
+
+    const winConditionHorizontal = () => {
+        if(board[0] == gameController.getCurrentPlayer().marker && board[0] == board[1] && board[0]== board[2]){
+            console.log("Player " + gameController.getCurrentPlayer().marker + " won!");
+        }else if(board[3] == gameController.getCurrentPlayer().marker && board[3] == board[4] && board[3] == board[5]){
+            console.log("Player " + gameController.getCurrentPlayer().marker + " won!");
+        }else if(board[6] == gameController.getCurrentPlayer().marker && board[6] == board[7] && board[6] == board[8]){
+            console.log("Player " + gameController.getCurrentPlayer().marker + " won!");
         }
     }
 
     const winConditionDiagonal = () => {
         if(board[0] == gameController.getCurrentPlayer().marker && board[0] == board[4] && board[0]== board[8]){
-            console.log("Winner!")
+            console.log("Player " + gameController.getCurrentPlayer().marker + "won!");
         }else if(board[2] == gameController.getCurrentPlayer().marker && board[2] == board[4] && board[2] == board[6]){
-            console.log("Winner");
+            console.log("Player " + gameController.getCurrentPlayer().marker + "won!");
         }
     }
 
 
-    return {clearBoard, getBoard, markBoard, winConditionDiagonal , winConditionVertical}
+    return {clearBoard, getBoard, markBoard, winConditionDiagonal , winConditionHorizontal ,winConditionVertical}
 
 })();
 
@@ -89,6 +100,10 @@ const displayController = (() => {
         const squareIndex = e.target.dataset.index;
         console.log(squareIndex);
         return squareIndex
+    };
+
+    const clearGameDisplay = () => {
+
     }
 
   
