@@ -52,6 +52,12 @@ const gameBoard = (() => {
         }
     }
 
+    const drawConditions = () => {
+        if(!winConditionVertical && !winConditionHorizontal && !winConditionDiagonal){
+            console.log("It's a draw!")
+        }
+    }
+
 
     return {clearBoard, getBoard, markBoard, winConditionDiagonal , winConditionHorizontal ,winConditionVertical}
 
@@ -87,17 +93,21 @@ const gameController = (() => {
 
 const displayController = (() => {
 
+    let messageDisplay = document.getElementById("message-display");
+
     let container = document.getElementById("container");
     let home = document.getElementById("home");
 
     let squares = document.querySelectorAll(".square");
-    let resetBtn = document.getElementById("resetBtn");
+    let refreshBtn = document.getElementById("refreshBtn");
 
     squares.forEach(square => {
         square.addEventListener("click", (e)=> {
             e.target.textContent = gameController.getCurrentPlayer().marker;
+            changeColor(e);
             gameBoard.markBoard(gameController.getCurrentPlayer().marker, getSquareIndex(e));
             gameController.playerTurn();
+            messageDisplay.textContent = "It's " + gameController.getCurrentPlayer().marker + "'s turn.";
            
         });
     });
@@ -108,14 +118,22 @@ const displayController = (() => {
         return squareIndex
     };
 
+    const changeColor = (e) => {
+        if(e.target.textContent === "X"){
+            e.target.style.color = "#e73a1f";
+        }else if(e.target.textContent === "O"){
+            e.target.style.color = "#02adc7";
+        }
+    }
     const clearGameDisplay = () => {
         for(i =0; i < squares.length; i++){
             squares[i].textContent = "";
             console.log("clear!");
             gameController.resetGame();
+            messageDisplay.textContent = "It's X's turn."
         }
     };
-    resetBtn.addEventListener("click", clearGameDisplay);
+    refreshBtn.addEventListener("click", clearGameDisplay);
 
   return {clearGameDisplay}
 
