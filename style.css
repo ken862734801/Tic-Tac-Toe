@@ -14,14 +14,13 @@ body{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .message-display{
-    margin-bottom:20px;
+    margin-bottom:25px;
     margin-top:-20px;
     text-align: center;
     font-size:1.0em;
     font-family: Arial, Helvetica, sans-serif;
     color:white;  
 }
-
 .gameboard{
     display:grid;
     grid-template-columns: minmax(100px, 135px) minmax(100px, 135px) minmax(100px, 135px);
@@ -42,7 +41,10 @@ body{
 .square:hover{
     background-color: #424242;
 }
-
+.square:active{
+    background-color: #292929;
+    transform: scale(0.95);
+}
 .score-container{
     margin-top:15px;
     display:flex;
@@ -65,7 +67,7 @@ body{
     align-items: center;
     flex-direction: column;
     margin-top:10px;
-    padding-top:15px;
+    padding-top:20px;
 }
 .game-btn-container > img{
     width:30px;
