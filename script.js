@@ -52,11 +52,6 @@ const gameBoard = (() => {
         }
     }
 
-    const drawConditions = () => {
-        if(!winConditionVertical && !winConditionHorizontal && !winConditionDiagonal){
-            console.log("It's a draw!")
-        }
-    }
 
 
     return {clearBoard, getBoard, markBoard, winConditionDiagonal , winConditionHorizontal ,winConditionVertical}
@@ -64,6 +59,8 @@ const gameBoard = (() => {
 })();
 
 const gameController = (() => {
+    let gameOver = false;
+    
     const playerOne = player("Player", "X", 0);
     const playerTwo = player("Player", "O", 0);
     let currentPlayer = playerOne;
@@ -103,7 +100,7 @@ const displayController = (() => {
 
     squares.forEach(square => {
         square.addEventListener("click", (e)=> {
-            e.target.textContent = gameController.getCurrentPlayer().marker;
+            drawMarker(e);
             changeColor(e);
             gameBoard.markBoard(gameController.getCurrentPlayer().marker, getSquareIndex(e));
             gameController.playerTurn();
@@ -117,6 +114,15 @@ const displayController = (() => {
         console.log(squareIndex);
         return squareIndex
     };
+
+    const drawMarker = (e) => {
+        if(e.target.textContent === "X" || e.target.textContent === "O"){
+            e.target.removeEventListener("click")
+            return
+        }else if(e.target.textContent === ""){
+            e.target.textContent = gameController.getCurrentPlayer().marker;
+        }
+    }
 
     const changeColor = (e) => {
         if(e.target.textContent === "X"){
