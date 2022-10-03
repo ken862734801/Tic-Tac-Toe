@@ -17,7 +17,11 @@ const gameBoard = (() => {
     }
 
     const markBoard = (marker, index) => {
-        board[index] = marker;
+        if(board[index] === "X" || board[index] === "O"){
+            return
+        }else if(board[index] === ""){
+            board[index] = marker;
+        }
         winConditionVertical();
         winConditionDiagonal();
         winConditionHorizontal();
@@ -60,7 +64,7 @@ const gameBoard = (() => {
 
 const gameController = (() => {
     let gameOver = false;
-    
+
     const playerOne = player("Player", "X", 0);
     const playerTwo = player("Player", "O", 0);
     let currentPlayer = playerOne;
