@@ -241,7 +241,6 @@ const displayController = (() => {
     refreshBtn.addEventListener("click", clearGameDisplay);
 
   return {clearGameDisplay}
-
-  
+ 
 
 })();
