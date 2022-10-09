@@ -72,6 +72,6 @@ body{
 .game-btn-container > img{
     width:30px;
 }
-#refreshBtn:hover{
+#restartBtn:hover{
     cursor: pointer;
 }
