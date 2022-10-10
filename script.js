@@ -66,7 +66,7 @@ const gameBoard = (() => {
             gameOver = true;
             return
             console.log("Player " + gameController.getCurrentPlayer().marker + " won!");
-        }else if(board[2] == gameController.getCurrentPlayer().marker && board[2] == board[5] && board[2] == board[6]){
+        }else if(board[2] == gameController.getCurrentPlayer().marker && board[2] == board[5] && board[2] == board[8]){
             winner = true;
             gameOver = true;
             return
